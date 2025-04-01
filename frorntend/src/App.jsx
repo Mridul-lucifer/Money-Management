@@ -9,7 +9,7 @@ export default function App() {
 
   const fetchPayments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/payments');
+      const response = await axios.get('https://money-management-server.vercel.app/api/payments');
       setPaymentRecords(response.data);
     } catch (err) {
       console.error("Error fetching payments:", err);
@@ -27,7 +27,7 @@ export default function App() {
     }
     try {
       const newPayment = { title: paymentTitle, amount: paymentAmount, type: 'add' };
-      await axios.post('http://localhost:5000/api/payments', newPayment);
+      await axios.post('https://money-management-server.vercel.app/api/payments', newPayment);
       setPaymentAmount(0);
       setPaymentTitle('');
       fetchPayments();
@@ -47,7 +47,7 @@ export default function App() {
   //   }
   //   try {
   //     const newPayment = { title: paymentTitle, amount: paymentAmount, type: 'subtract' };
-  //     await axios.post('http://localhost:5000/api/payments', newPayment);
+  //     await axios.post('https://money-management-server.vercel.app/api/payments', newPayment);
   //     setPaymentAmount(0);
   //     setPaymentTitle('');
   //     fetchPayments();
@@ -59,7 +59,7 @@ export default function App() {
   // const editPayment = async (id, updatedAmount) => {
   //   try {
   //     const updatedPayment = { amount: updatedAmount, type: 'add' };
-  //     await axios.put(`http://localhost:5000/api/payments/${id}`, updatedPayment);
+  //     await axios.put(`https://money-management-server.vercel.app/api/payments/${id}`, updatedPayment);
   //     fetchPayments();
   //   } catch (err) {
   //     console.error("Error editing payment:", err);
@@ -68,7 +68,7 @@ export default function App() {
 
   const deletePayment = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/payments/${id}`);
+      await axios.delete(`https://money-management-server.vercel.app/api/payments/${id}`);
       fetchPayments();
     } catch (err) {
       console.error("Error deleting payment:", err);
